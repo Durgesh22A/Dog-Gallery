@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dog Gallery – Responsive HTML & CSS</title>
+  <meta name="description" content="A simple, responsive gallery showcasing different dog breeds using only HTML and CSS." />
+  <style>
+    /* 🌙 Default: Dark Theme */
+    :root {
+      --bg1: #0f172a;
+      --bg2: #1e3a8a;
+      --bg3: #3b82f6;
+      --card: rgba(255, 255, 255, 0.06);
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --ring: #38bdf8;
+      --shadow: 0 8px 24px rgba(0,0,0,0.3);
+      --footer-bg: rgba(0,0,0,0.3);
+    }
+
+    /* ☀️ Light Theme */
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg1: #e0f2fe;
+        --bg2: #bae6fd;
+        --bg3: #7dd3fc;
+        --card: rgba(255, 255, 255, 0.8);
+        --text: #0f172a;
+        --muted: #334155;
+        --ring: #0284c7;
+        --shadow: 0 6px 16px rgba(0,0,0,0.1);
+        --footer-bg: rgba(255,255,255,0.6);
+      }
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background: linear-gradient(145deg, var(--bg1) 0%, var(--bg2) 50%, var(--bg3) 100%);
+      background-attachment: fixed;
+      color: var(--text);
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      transition: background 0.6s ease, color 0.6s ease;
+    }
+
+    header {
+      max-width: 1100px;
+      margin: 40px auto 16px;
+      padding: 0 16px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0 0 10px;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      letter-spacing: -0.02em;
+      background: linear-gradient(to right, #38bdf8, #22d3ee, #a78bfa);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    header p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .gallery {
+      max-width: 1100px;
+      margin: 16px auto 56px;
+      padding: 0 16px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .dog {
+      background: var(--card);
+      border-radius: 18px;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+
+    .dog:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+      border-color: var(--ring);
+    }
+
+    .dog img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .meta {
+      padding: 12px 14px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .breed {
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .badge {
+      font-size: .75rem;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(56, 189, 248, 0.2);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      color: #bae6fd;
+    }
+
+    footer {
+      margin-top: auto;
+      text-align: center;
+      padding: 1rem;
+      background: var(--footer-bg);
+      color: var(--text);
+      font-size: 0.9rem;
+      letter-spacing: 0.3px;
+      backdrop-filter: blur(6px);
+      transition: background 0.6s ease;
+    }
+
+    @media (max-width: 500px) {
+      header h1 { font-size: 2rem; }
+      .dog img { height: 180px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🐾 Dog Gallery</h1>
+    <p>Explore adorable dog breeds from around the world!</p>
+  </header>
+
+  <main class="gallery" aria-label="Dog Breeds Gallery">
+    <article class="dog"><img src="https://www.vidavetcare.com/wp-content/uploads/sites/234/2022/04/labrador-retriever-dog-breed-info.jpeg"><div class="meta"><span class="breed">Labrador Retriever</span><span class="badge">Friendly</span></div></article>
+    <article class="dog"><img src="https://tiimg.tistatic.com/fp/1/008/882/german-shepherd-puppy-dog-357.jpg"><div class="meta"><span class="breed">German Shepherd</span><span class="badge">Intelligent</span></div></article>
+    <article class="dog"><img src="https://www.vidavetcare.com/wp-content/uploads/sites/234/2022/04/golden-retriever-dog-breed-info.jpeg"><div class="meta"><span class="breed">Golden Retriever</span><span class="badge">Gentle</span></div></article>
+    <article class="dog"><img src="https://images.unsplash.com/photo-1517423440428-a5a00ad493e8?q=80&w=1200&auto=format&fit=crop"><div class="meta"><span class="breed">Siberian Husky</span><span class="badge">Energetic</span></div></article>
+    <article class="dog"><img src="https://images.unsplash.com/photo-1558788353-f76d92427f16?q=80&w=1200&auto=format&fit=crop"><div class="meta"><span class="breed">Corgi</span><span class="badge">Lively</span></div></article>
+    <article class="dog"><img src="https://yumove.co.uk/cdn/shop/files/Beagle.jpg?v=1749573704&width=550"><div class="meta"><span class="breed">Beagle</span><span class="badge">Curious</span></div></article>
+    <article class="dog"><img src="https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?q=80&w=1200&auto=format&fit=crop"><div class="meta"><span class="breed">Bulldog</span><span class="badge">Calm</span></div></article>
+    <article class="dog"><img src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?q=80&w=1200&auto=format&fit=crop"><div class="meta"><span class="breed">Pug</span><span class="badge">Charming</span></div></article>
+    <article class="dog"><img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?q=80&w=1200&auto=format&fit=crop"><div class="meta"><span class="breed">Pomeranian</span><span class="badge">Playful</span></div></article>
+    <article class="dog"><img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?q=80&w=1200&auto=format&fit=crop"><div class="meta"><span class="breed">Dalmatian</span><span class="badge">Athletic</span></div></article>
+    <article class="dog"><img src="https://images.happypet.care/images/21217/doberman-pinscher-standing-by-water.webp"><div class="meta"><span class="breed">Doberman</span><span class="badge">Loyal</span></div></article>
+    <article class="dog"><img src="https://images.unsplash.com/photo-1525253086316-d0c936c814f8?q=80&w=1200&auto=format&fit=crop"><div class="meta"><span class="breed">Shiba Inu</span><span class="badge">Bold</span></div></article>
+  </main>
+
+  <footer>
+    © 2025 Durgesh Kumar | Dog Gallery Project
+  </footer>
+</body>
+</html>
